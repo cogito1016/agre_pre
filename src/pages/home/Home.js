@@ -24,6 +24,7 @@ class Home extends Component {
     this.getAndSetFeatureImgs();
     this.getAndSetProducts();
     this.addInfiniteScrollEvent();
+    this.firstRunInfiniteEventWhenWillMount();
   }
 
   componentWillUnmount() {
@@ -50,6 +51,10 @@ class Home extends Component {
         products: newProducts,
       });
     });
+  };
+
+  firstRunInfiniteEventWhenWillMount = () => {
+    this.infiniteScrollEvent();
   };
 
   addInfiniteScrollEvent = () => {
