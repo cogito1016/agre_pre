@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 const CartButton_Style = styled.div`
   position: absolute;
@@ -19,13 +20,17 @@ const CartItemNumberBox = styled.div`
   background-color: red;
 `;
 
-const CartButton = () => {
+const CartButton = (props) => {
+  const btnClickHandler = () => {
+    props.history.push("/cart");
+  };
+
   return (
-    <CartButton_Style>
+    <CartButton_Style onClick={btnClickHandler}>
       <CartItemNumberBox>99+</CartItemNumberBox>
       장바구니
     </CartButton_Style>
   );
 };
 
-export default CartButton;
+export default withRouter(CartButton);
