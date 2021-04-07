@@ -11,39 +11,50 @@ const Container = styled.div`
 const ProductImg = styled.img`
   width: 100%;
   height: 200px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 `;
 
 const ProductInfoBox = styled.div`
   width: 100%;
-  height: 80px;
+  height: 70px;
+  margin-top: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   background-color: red;
 `;
 
 const Title = styled.label`
   display: block;
-  height: 30px;
-  padding-top: 10px;
+  height: 40px;
+  user-select: none;
+  cursor: pointer;
   background-color: green;
 `;
 
 const Price = styled.label`
   display: block;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   font-weight: bold;
   font-size: 18px;
+  user-select: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   background-color: orange;
 `;
 
-const LOGO_SRC = "https://image.wingeat.com/logo/images/we_logo_center.png";
+const endPoint = "https://image.wingeat.com";
 
-const ProductCard = () => {
+const ProductCard = (props) => {
+  const product = props.product;
+
   return (
     <Container>
-      <ProductImg src={LOGO_SRC} />
+      <ProductImg src={`${endPoint}/${product.image}`} />
       <ProductInfoBox>
-        <Title>[예약판매 할인] [고른] 프리미엄 양념 LA갈비 (750g)</Title>
-        <Price>23,900원</Price>
+        <Title>{product.itemName}</Title>
+        <Price>{product.price}원</Price>
       </ProductInfoBox>
     </Container>
   );

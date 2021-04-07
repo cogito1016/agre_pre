@@ -8,18 +8,15 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const List = () => {
+const List = (props) => {
+  const products = props.products;
+
   return (
     <Container>
       {/* I'm List */}
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      {products.map((element) => {
+        return <ProductCard product={element} />;
+      })}
     </Container>
   );
 };
