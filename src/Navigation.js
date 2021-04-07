@@ -1,6 +1,6 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import Cart from "./cart/Cart";
-import Home from "./home/Home";
+import Cart from "./pages/cart/Cart";
+import Home from "./pages/home/Home";
 
 const Navigation = () => {
   return (

@@ -1,4 +1,4 @@
-import { Header, Feature, List } from "./items";
+import { Header, Feature, List } from "./components";
 
 const Home = () => {
   return (
