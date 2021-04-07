@@ -1,5 +1,13 @@
+import { Header, Feature, List } from "./items";
+
 const Home = () => {
-  return <div>I'm Home</div>;
+  return (
+    <div>
+      <Header />
+      <Feature />
+      <List />
+    </div>
+  );
 };
 
 export default Home;
