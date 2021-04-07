@@ -111,6 +111,10 @@ class Home extends Component {
     }
   };
 
+  productClickHandler = (product) => {
+    alert("장바구니에 상품을 추가하였습니다.");
+  };
+
   render() {
     const { featureImgs, products } = this.state;
 
@@ -120,7 +124,10 @@ class Home extends Component {
         <Container>
           <Feature featureImgs={featureImgs} />
           <ListTitle>윙잇 MADE</ListTitle>
-          <List products={products} />
+          <List
+            products={products}
+            productClickHandler={this.productClickHandler}
+          />
         </Container>
       </div>
     );

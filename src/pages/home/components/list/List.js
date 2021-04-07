@@ -8,12 +8,18 @@ const Container = styled.div`
 `;
 
 const List = (props) => {
-  const products = props.products;
+  const { products, productClickHandler } = props;
 
   return (
     <Container>
       {products.map((element) => {
-        return <ProductCard key={element.id} product={element} />;
+        return (
+          <ProductCard
+            productClickHandler={productClickHandler}
+            key={element.id}
+            product={element}
+          />
+        );
       })}
     </Container>
   );

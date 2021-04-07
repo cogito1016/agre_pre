@@ -5,12 +5,14 @@ const Container = styled.div`
   height: 280px;
   margin-bottom: 30px;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 const ProductImg = styled.img`
   width: 100%;
   height: 200px;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 const ProductInfoBox = styled.div`
@@ -37,19 +39,24 @@ const Price = styled.label`
   user-select: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  cursor: pointer;
 `;
 
 const endPoint = process.env.REACT_APP_IMAGE;
 
 const ProductCard = (props) => {
   const product = props.product;
+  const { image, itemName, price } = product;
+  const productClickHandler = props.productClickHandler;
+
+  let priceByKorean = price.toLocaleString("ko-KR");
 
   return (
-    <Container>
-      <ProductImg src={`${endPoint}/${product.image}`} />
+    <Container onClick={() => productClickHandler(product)}>
+      <ProductImg src={`${endPoint}/${image}`} />
       <ProductInfoBox>
-        <Title>{product.itemName}</Title>
-        <Price>{product.price}원</Price>
+        <Title>{itemName}</Title>
+        <Price>{priceByKorean}원</Price>
       </ProductInfoBox>
     </Container>
   );
