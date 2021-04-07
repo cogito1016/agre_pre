@@ -62,7 +62,23 @@ class Home extends Component {
     window.removeEventListener("scroll", this.infiniteScrollEvent);
   };
 
+  checkValidation = (page) => {
+    const MAX_PAGE = 6;
+
+    if (page >= MAX_PAGE) {
+      return false;
+    }
+
+    return true;
+  };
+
   infiniteScrollEvent = () => {
+    const page = this.state.page;
+
+    if (!this.checkValidation(page)) {
+      return;
+    }
+
     const { documentElement, body } = document;
 
     const scrollHeight = Math.max(
@@ -72,10 +88,8 @@ class Home extends Component {
     const scrollTop = Math.max(documentElement.scrollTop, body.scrollTop);
     const clientHeight = documentElement.clientHeight;
 
-    console.log(scrollHeight);
-
     if (scrollTop + clientHeight >= scrollHeight) {
-      const newPage = this.state.page + 1;
+      const newPage = page + 1;
       this.setState(
         {
           page: newPage,

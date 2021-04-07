@@ -13,9 +13,8 @@ const List = (props) => {
 
   return (
     <Container>
-      {/* I'm List */}
       {products.map((element) => {
-        return <ProductCard product={element} />;
+        return <ProductCard key={element.id} product={element} />;
       })}
     </Container>
   );
