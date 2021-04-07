@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const endPoint = "https://image.wingeat.com";
+const endPoint = process.env.REACT_APP_IMAGE;
 
 const Feature = (props) => {
   const featureImgs = props.featureImgs;

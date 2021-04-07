@@ -3,8 +3,7 @@ import { Header, Feature, List } from "./components";
 import axios from "axios";
 import styled from "styled-components";
 
-const featuresEndPoint = "https://node.wingeat.com/test-api/features";
-const productEndPoint = "https://node.wingeat.com/test-api/items";
+const endPoint = process.env.REACT_APP_API;
 
 const Container = styled.div`
   width: 1200px;
@@ -26,7 +25,7 @@ class Home extends Component {
   }
 
   getAndSetFeatureImgs = async () => {
-    await axios.get(featuresEndPoint).then((response) => {
+    await axios.get(`${endPoint}/features`).then((response) => {
       const data = response.data;
       this.setState({
         featureImgs: data,
@@ -35,7 +34,7 @@ class Home extends Component {
   };
 
   getAndSetProducts = async () => {
-    await axios.get(`${productEndPoint}?page=1`).then((response) => {
+    await axios.get(`${endPoint}/items?page=1`).then((response) => {
       const data = response.data;
       this.setState({
         products: data,

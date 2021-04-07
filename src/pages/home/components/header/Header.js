@@ -19,8 +19,8 @@ const Logo = styled.img`
   width: 120px;
   height: 50px;
 `;
-
-const LOGO_SRC = "https://image.wingeat.com/logo/images/we_logo_center.png";
+const endPoint = process.env.REACT_APP_IMAGE;
+const LOGO_SRC = `${endPoint}/logo/images/we_logo_center.png`;
 
 const Header = () => {
   return (

@@ -44,7 +44,7 @@ const Price = styled.label`
   background-color: orange;
 `;
 
-const endPoint = "https://image.wingeat.com";
+const endPoint = process.env.REACT_APP_IMAGE;
 
 const ProductCard = (props) => {
   const product = props.product;
