@@ -8,6 +8,7 @@ const Feature = (props) => {
   const featureImgs = props.featureImgs;
 
   const settings = {
+    arrows: false,
     dots: true,
     infinite: true,
     autoplay: true,
