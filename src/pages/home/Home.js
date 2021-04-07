@@ -16,8 +16,8 @@ class Home extends Component {
     this.getAndSetFeatureImgs();
   }
 
-  getAndSetFeatureImgs = () => {
-    axios.get(endPoint).then((response) => {
+  getAndSetFeatureImgs = async () => {
+    await axios.get(endPoint).then((response) => {
       const data = response.data;
       this.setState({
         featureImgs: data,
