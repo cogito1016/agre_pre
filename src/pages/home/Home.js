@@ -10,6 +10,13 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
+const ListTitle = styled.h1`
+  margin: 40px 0 80px 0;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+`;
+
 class Home extends Component {
   constructor() {
     super();
@@ -112,6 +119,7 @@ class Home extends Component {
         <Header />
         <Container>
           <Feature featureImgs={featureImgs} />
+          <ListTitle>윙잇 MADE</ListTitle>
           <List products={products} />
         </Container>
       </div>

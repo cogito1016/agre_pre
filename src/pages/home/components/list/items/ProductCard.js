@@ -4,15 +4,13 @@ const Container = styled.div`
   width: 280px;
   height: 280px;
   margin-bottom: 30px;
-  background-color: gray;
   border-radius: 5px;
 `;
 
 const ProductImg = styled.img`
   width: 100%;
   height: 200px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-radius: 5px;
 `;
 
 const ProductInfoBox = styled.div`
@@ -21,7 +19,6 @@ const ProductInfoBox = styled.div`
   margin-top: 10px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-color: red;
 `;
 
 const Title = styled.label`
@@ -29,7 +26,6 @@ const Title = styled.label`
   height: 40px;
   user-select: none;
   cursor: pointer;
-  background-color: green;
 `;
 
 const Price = styled.label`
@@ -41,7 +37,6 @@ const Price = styled.label`
   user-select: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-color: orange;
 `;
 
 const endPoint = process.env.REACT_APP_IMAGE;
