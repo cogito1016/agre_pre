@@ -1,3 +1,4 @@
+import { Component } from "react";
 import styled from "styled-components";
 import { Calculator, Product } from "./components";
 
@@ -19,16 +20,84 @@ const CartBox = styled.div`
   justify-content: space-between;
 `;
 
-const Cart = () => {
-  return (
-    <Container>
-      <CartTitle>장바구니</CartTitle>
-      <CartBox>
-        <Product />
-      </CartBox>
-      <Calculator />
-    </Container>
-  );
-};
+const ZeroProductsBox = styled.div`
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f23e42;
+`;
+
+class Cart extends Component {
+  constructor() {
+    super();
+    this.state = { products: [], totalPrice: 0 };
+  }
+
+  componentDidMount() {
+    this.getAndSetProductsInCart();
+  }
+
+  getAndSetProductsInCart = () => {
+    const products = [];
+
+    const localStorage = window.localStorage;
+    const localStorageLength = localStorage.length;
+    let count = 1;
+
+    for (let key in localStorage) {
+      if (localStorageLength < count) {
+        break;
+      }
+
+      let value = JSON.parse(localStorage.getItem(key));
+      products.push(value);
+      count++;
+    }
+
+    this.setState(
+      {
+        products: products,
+      },
+      this.getAndSetTotalPrice
+    );
+  };
+
+  getAndSetTotalPrice = () => {
+    let totalPrice = 0;
+    const products = this.state.products;
+
+    products.forEach((product) => {
+      totalPrice += product.price * product.quantityInCart;
+    });
+
+    this.setState({
+      totalPrice: totalPrice,
+    });
+  };
+
+  render() {
+    const { products, totalPrice } = this.state;
+    return (
+      <Container>
+        <CartTitle>장바구니</CartTitle>
+
+        {products.length === 0 ? (
+          <ZeroProductsBox>장바구니에 담긴 상품이 없음</ZeroProductsBox>
+        ) : (
+          <div>
+            <CartBox>
+              {products.map((product) => {
+                return <Product product={product} />;
+              })}
+            </CartBox>
+            <Calculator totalPrice={totalPrice} />
+          </div>
+        )}
+      </Container>
+    );
+  }
+}
 
 export default Cart;

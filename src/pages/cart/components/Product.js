@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const ProductTitle = styled.label`
   display: block;
-  width: 200px;
+  width: 600px;
   margin-left: 10px;
 `;
 
@@ -73,24 +73,31 @@ const QuantityLabel = styled.label`
   line-height: 30px;
 `;
 
-const ProductBox = () => {
+const IMAGE_ENDPOINT = process.env.REACT_APP_IMAGE;
+
+const ProductBox = (props) => {
+  const { product } = props;
+  const { image, itemName, price, quantityInCart } = product;
+  const priceInKorea = price.toLocaleString("ko-KR");
+  const totalPrice = (price * quantityInCart).toLocaleString("ko-KR");
+
   return (
     <Container>
       <ProductTitle>
         <input type="checkbox" />
-        간편 훈제 삼겹살 (2인분)
+        {itemName}
       </ProductTitle>
-      <ProductImg alert="이미지" />
-      <ProductPrice>7,900원</ProductPrice>
+      <ProductImg src={`${IMAGE_ENDPOINT}/${image}`} />
+      <ProductPrice>{priceInKorea}원</ProductPrice>
 
       <ProductQuantity>
         <QuantityControlBtn>-</QuantityControlBtn>
-        <QuantityLabel>2</QuantityLabel>
+        <QuantityLabel>{quantityInCart}</QuantityLabel>
         <QuantityControlBtn>+</QuantityControlBtn>
       </ProductQuantity>
 
       <CancelBtn>X</CancelBtn>
-      <TotalPriceLabel>합계: 15,800원</TotalPriceLabel>
+      <TotalPriceLabel>합계: {totalPrice}원</TotalPriceLabel>
     </Container>
   );
 };

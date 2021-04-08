@@ -38,12 +38,15 @@ const PriceLabel = styled.label`
   color: #f23e42;
 `;
 
-const Calculator = () => {
+const Calculator = (props) => {
+  const { totalPrice } = props;
+  const totalPriceInKorea = totalPrice.toLocaleString("ko-KR");
+
   return (
     <Container>
       <TotalPriceBox>
         <label>결제 예정 금액</label>
-        <PriceLabel>28,700원</PriceLabel>
+        <PriceLabel>{totalPriceInKorea}원</PriceLabel>
       </TotalPriceBox>
 
       <OrderBtn>주문하기</OrderBtn>
