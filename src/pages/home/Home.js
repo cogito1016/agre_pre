@@ -113,6 +113,19 @@ class Home extends Component {
 
   productClickHandler = (product) => {
     alert("장바구니에 상품을 추가하였습니다.");
+
+    this.checkAndSetProductToCart(product);
+  };
+
+  checkAndSetProductToCart = (product) => {
+    let value = 1;
+
+    const originValue = window.localStorage.getItem(product.id);
+    if (originValue !== null) {
+      value = parseInt(originValue) + 1;
+    }
+
+    window.localStorage.setItem(product.id, value);
   };
 
   render() {
