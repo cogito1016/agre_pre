@@ -91,12 +91,10 @@ class Home extends Component {
   };
 
   addInfiniteScrollEvent = () => {
-    console.log("이벤트 리스너를 추가합니다");
     window.addEventListener("scroll", this.infiniteScrollEvent);
   };
 
   removeInfiniteScrollEvent = () => {
-    console.log("이벤트 리스너를 제거합니다");
     window.removeEventListener("scroll", this.infiniteScrollEvent);
   };
 

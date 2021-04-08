@@ -14,6 +14,12 @@ const Title = styled.div`
   text-align: center;
 `;
 
+const ButtonsBox = styled.div`
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+`;
+
 const Logo = styled.img`
   margin: 5px 0 10px 0;
   width: 120px;
@@ -28,7 +34,9 @@ const Header = (props) => {
   return (
     <Container>
       <MenuBar>
-        <CartButton productQuantityInCart={productQuantityInCart} />
+        <ButtonsBox>
+          <CartButton productQuantityInCart={productQuantityInCart} />
+        </ButtonsBox>
       </MenuBar>
       <Title>
         <Logo src={LOGO_SRC} />
