@@ -22,11 +22,13 @@ const Logo = styled.img`
 const endPoint = process.env.REACT_APP_IMAGE;
 const LOGO_SRC = `${endPoint}/logo/images/we_logo_center.png`;
 
-const Header = () => {
+const Header = (props) => {
+  const productQuantityInCart = props.productQuantityInCart;
+
   return (
     <Container>
       <MenuBar>
-        <CartButton />
+        <CartButton productQuantityInCart={productQuantityInCart} />
       </MenuBar>
       <Title>
         <Logo src={LOGO_SRC} />

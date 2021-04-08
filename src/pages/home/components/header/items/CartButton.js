@@ -15,6 +15,7 @@ const CartItemNumberBox = styled.div`
   display: inline;
   margin-right: 5px;
   border-radius: 10px;
+  padding: 1px;
   text-align: center;
   color: white;
   background-color: red;
@@ -25,9 +26,13 @@ const CartButton = (props) => {
     props.history.push("/cart");
   };
 
+  const productQuantityInCart = props.productQuantityInCart;
+
   return (
     <CartButton_Style onClick={btnClickHandler}>
-      <CartItemNumberBox>99+</CartItemNumberBox>
+      <CartItemNumberBox>
+        {productQuantityInCart >= 999 ? "999+" : productQuantityInCart}
+      </CartItemNumberBox>
       장바구니
     </CartButton_Style>
   );

@@ -24,6 +24,7 @@ class Home extends Component {
       featureImgs: [],
       products: [],
       page: 1,
+      productQuantityInCart: 0,
     };
   }
 
@@ -32,6 +33,7 @@ class Home extends Component {
     this.getAndSetProducts();
     this.addInfiniteScrollEvent();
     this.firstRunInfiniteEventWhenWillMount();
+    this.setTotalProductsQuantityInCart();
   }
 
   componentWillUnmount() {
@@ -57,6 +59,28 @@ class Home extends Component {
       this.setState({
         products: newProducts,
       });
+    });
+  };
+
+  setTotalProductsQuantityInCart = () => {
+    let total = 0;
+
+    const localStorage = window.localStorage;
+    const localStorageLength = localStorage.length;
+    let count = 1;
+
+    for (let key in localStorage) {
+      if (localStorageLength < count) {
+        break;
+      }
+
+      let value = parseInt(localStorage.getItem(key));
+      total += value;
+      count++;
+    }
+
+    this.setState({
+      productQuantityInCart: total,
     });
   };
 
@@ -115,6 +139,7 @@ class Home extends Component {
     alert("장바구니에 상품을 추가하였습니다.");
 
     this.checkAndSetProductToCart(product);
+    this.setTotalProductsQuantityInCart();
   };
 
   checkAndSetProductToCart = (product) => {
@@ -129,11 +154,11 @@ class Home extends Component {
   };
 
   render() {
-    const { featureImgs, products } = this.state;
+    const { featureImgs, products, productQuantityInCart } = this.state;
 
     return (
       <div>
-        <Header />
+        <Header productQuantityInCart={productQuantityInCart} />
         <Container>
           <Feature featureImgs={featureImgs} />
           <ListTitle>윙잇 MADE</ListTitle>
