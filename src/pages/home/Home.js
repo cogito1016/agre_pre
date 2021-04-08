@@ -74,7 +74,9 @@ class Home extends Component {
         break;
       }
 
-      let value = parseInt(localStorage.getItem(key));
+      let value = parseInt(
+        JSON.parse(localStorage.getItem(key)).quantityInCart
+      );
       total += value;
       count++;
     }
@@ -145,12 +147,14 @@ class Home extends Component {
   checkAndSetProductToCart = (product) => {
     let value = 1;
 
-    const originValue = window.localStorage.getItem(product.id);
-    if (originValue !== null) {
-      value = parseInt(originValue) + 1;
+    const originProduct = window.localStorage.getItem(product.id);
+    if (originProduct !== null) {
+      value = parseInt(JSON.parse(originProduct).quantityInCart) + 1;
     }
 
-    window.localStorage.setItem(product.id, value);
+    product.quantityInCart = value;
+
+    window.localStorage.setItem(product.id, JSON.stringify(product));
   };
 
   render() {
