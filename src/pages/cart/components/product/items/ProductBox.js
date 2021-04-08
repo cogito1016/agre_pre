@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
-  background-color: purple;
   height: 150px;
   padding-top: 10px;
   border: 1px solid black;
@@ -12,7 +11,6 @@ const ProductTitle = styled.label`
   display: block;
   width: 200px;
   margin-left: 10px;
-  background-color: pink;
 `;
 
 const ProductImg = styled.img`
@@ -30,7 +28,6 @@ const ProductPrice = styled.label`
   width: 100px;
   font-size: 20px;
   font-weight: bold;
-  background-color: greenyellow;
 `;
 
 const ProductQuantity = styled.label`
@@ -67,7 +64,8 @@ const QuantityControlBtn = styled.div`
   height: 30px;
   line-height: 30px;
   text-align: center;
-  background-color: pink;
+  user-select: none;
+  cursor: pointer;
 `;
 
 const QuantityLabel = styled.label`

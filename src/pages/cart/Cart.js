@@ -5,7 +5,6 @@ const Container = styled.div`
   position: relative;
   width: 1200px;
   margin: 0 auto;
-  background-color: gray;
 `;
 
 const CartTitle = styled.h1`
@@ -18,7 +17,6 @@ const CartTitle = styled.h1`
 const CartBox = styled.div`
   width: 650px;
   justify-content: space-between;
-  background-color: red;
 `;
 
 const Cart = () => {
