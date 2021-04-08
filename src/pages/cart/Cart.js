@@ -6,6 +6,10 @@ const Container = styled.div`
   position: relative;
   width: 1200px;
   margin: 0 auto;
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
+  }
 `;
 
 const CartTitle = styled.h1`
@@ -13,11 +17,19 @@ const CartTitle = styled.h1`
   font-size: 24px;
   font-weight: bold;
   text-align: center;
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
+  }
 `;
 
 const CartBox = styled.div`
   width: 650px;
   justify-content: space-between;
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
+  }
 `;
 
 const ZeroProductsBox = styled.div`
@@ -77,7 +89,6 @@ class Cart extends Component {
     this.setState({
       totalPrice: totalPrice,
     });
-    console.log(totalPrice);
   };
 
   productCheckHandler = (e, id) => {

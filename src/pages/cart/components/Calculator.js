@@ -6,6 +6,12 @@ const Container = styled.div`
   top: 60px;
   width: 500px;
   height: 150px;
+
+  @media screen and (max-width: 650px) {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+  }
 `;
 
 const TotalPriceBox = styled.div`
@@ -18,6 +24,10 @@ const TotalPriceBox = styled.div`
   margin: 10px auto 0 auto;
   border-radius: 5px;
   background-color: #f5f5f5;
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
+  }
 `;
 
 const OrderBtn = styled.div`
@@ -31,6 +41,10 @@ const OrderBtn = styled.div`
   border-radius: 5px;
   margin: 10px auto 0 auto;
   background-color: #f23e42;
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
+  }
 `;
 
 const PriceLabel = styled.label`
