@@ -103,6 +103,12 @@ class Cart extends Component {
     this.getAndSetProductsInCart();
   };
 
+  productCancelHandler = (id) => {
+    delete window.localStorage[id];
+
+    this.getAndSetProductsInCart();
+  };
+
   render() {
     const { products, totalPrice } = this.state;
     return (
@@ -122,6 +128,7 @@ class Cart extends Component {
                     productQuantityControlHandler={
                       this.productQuantityControlHandler
                     }
+                    productCancelHandler={this.productCancelHandler}
                   />
                 );
               })}
