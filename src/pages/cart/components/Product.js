@@ -76,15 +76,19 @@ const QuantityLabel = styled.label`
 const IMAGE_ENDPOINT = process.env.REACT_APP_IMAGE;
 
 const ProductBox = (props) => {
-  const { product } = props;
-  const { image, itemName, price, quantityInCart } = product;
+  const { product, productCheckHandler } = props;
+  const { image, itemName, price, quantityInCart, checked, id } = product;
   const priceInKorea = price.toLocaleString("ko-KR");
   const totalPrice = (price * quantityInCart).toLocaleString("ko-KR");
 
   return (
     <Container>
       <ProductTitle>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          onChange={(e) => productCheckHandler(e, id)}
+          checked={checked}
+        />
         {itemName}
       </ProductTitle>
       <ProductImg src={`${IMAGE_ENDPOINT}/${image}`} />

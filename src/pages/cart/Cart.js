@@ -69,12 +69,25 @@ class Cart extends Component {
     const products = this.state.products;
 
     products.forEach((product) => {
-      totalPrice += product.price * product.quantityInCart;
+      if (product.checked) {
+        totalPrice += product.price * product.quantityInCart;
+      }
     });
 
     this.setState({
       totalPrice: totalPrice,
     });
+    console.log(totalPrice);
+  };
+
+  productCheckHandler = (e, id) => {
+    const checked = e.target.checked;
+    const product = JSON.parse(window.localStorage.getItem(id));
+    product.checked = checked;
+    window.localStorage.setItem(id, JSON.stringify(product));
+    console.log(window.localStorage);
+
+    this.getAndSetProductsInCart();
   };
 
   render() {
@@ -89,7 +102,12 @@ class Cart extends Component {
           <div>
             <CartBox>
               {products.map((product) => {
-                return <Product product={product} />;
+                return (
+                  <Product
+                    product={product}
+                    productCheckHandler={this.productCheckHandler}
+                  />
+                );
               })}
             </CartBox>
             <Calculator totalPrice={totalPrice} />
