@@ -76,7 +76,7 @@ const QuantityLabel = styled.label`
 const IMAGE_ENDPOINT = process.env.REACT_APP_IMAGE;
 
 const ProductBox = (props) => {
-  const { product, productCheckHandler } = props;
+  const { product, productCheckHandler, productQuantityControlHandler } = props;
   const { image, itemName, price, quantityInCart, checked, id } = product;
   const priceInKorea = price.toLocaleString("ko-KR");
   const totalPrice = (price * quantityInCart).toLocaleString("ko-KR");
@@ -95,9 +95,17 @@ const ProductBox = (props) => {
       <ProductPrice>{priceInKorea}원</ProductPrice>
 
       <ProductQuantity>
-        <QuantityControlBtn>-</QuantityControlBtn>
+        <QuantityControlBtn
+          onClick={() => productQuantityControlHandler(id, -1)}
+        >
+          -
+        </QuantityControlBtn>
         <QuantityLabel>{quantityInCart}</QuantityLabel>
-        <QuantityControlBtn>+</QuantityControlBtn>
+        <QuantityControlBtn
+          onClick={() => productQuantityControlHandler(id, +1)}
+        >
+          +
+        </QuantityControlBtn>
       </ProductQuantity>
 
       <CancelBtn>X</CancelBtn>

@@ -81,11 +81,24 @@ class Cart extends Component {
   };
 
   productCheckHandler = (e, id) => {
-    const checked = e.target.checked;
     const product = JSON.parse(window.localStorage.getItem(id));
+    const checked = e.target.checked;
     product.checked = checked;
+
     window.localStorage.setItem(id, JSON.stringify(product));
-    console.log(window.localStorage);
+
+    this.getAndSetProductsInCart();
+  };
+
+  productQuantityControlHandler = (id, offset) => {
+    const product = JSON.parse(window.localStorage.getItem(id));
+    const quantity = product.quantityInCart + offset;
+
+    if (quantity < 1) {
+      return;
+    }
+    product.quantityInCart = quantity;
+    window.localStorage.setItem(id, JSON.stringify(product));
 
     this.getAndSetProductsInCart();
   };
@@ -106,6 +119,9 @@ class Cart extends Component {
                   <Product
                     product={product}
                     productCheckHandler={this.productCheckHandler}
+                    productQuantityControlHandler={
+                      this.productQuantityControlHandler
+                    }
                   />
                 );
               })}
