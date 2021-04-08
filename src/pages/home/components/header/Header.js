@@ -3,6 +3,10 @@ import CartButton from "./items/CartButton";
 
 const Container = styled.div`
   border-bottom: 1px solid #f5f5f5;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const MenuBar = styled.div`
@@ -18,6 +22,10 @@ const ButtonsBox = styled.div`
   position: relative;
   width: 1200px;
   margin: 0 auto;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const Logo = styled.img`

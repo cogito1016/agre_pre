@@ -8,6 +8,14 @@ const endPoint = process.env.REACT_APP_API;
 const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
+
+  @media screen and (max-width: 800px) and (min-width: 600px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 600px;
+  }
 `;
 
 const ListTitle = styled.h1`
@@ -15,6 +23,10 @@ const ListTitle = styled.h1`
   font-size: 24px;
   font-weight: bold;
   text-align: center;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 class Home extends Component {
