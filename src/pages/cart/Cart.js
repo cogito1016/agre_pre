@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { Calculator, Product } from "./components";
 
 const Container = styled.div`
+  position: relative;
   width: 1200px;
   margin: 0 auto;
   background-color: gray;
@@ -14,7 +16,8 @@ const CartTitle = styled.h1`
 `;
 
 const CartBox = styled.div`
-  height: 100px;
+  width: 650px;
+  justify-content: space-between;
   background-color: red;
 `;
 
@@ -22,7 +25,10 @@ const Cart = () => {
   return (
     <Container>
       <CartTitle>장바구니</CartTitle>
-      <CartBox>..</CartBox>
+      <CartBox>
+        <Product />
+      </CartBox>
+      <Calculator />
     </Container>
   );
 };
